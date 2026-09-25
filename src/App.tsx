@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-import { Navbar } from './components/Navbar';
+import React, { useState, useEffect } from 'react';
+import { HeaderNav } from './pages/HeaderNav';
+import { PageType } from './pages/types';
+import { StoryPage } from './pages/StoryPage';
+import { NutritionPage } from './pages/NutritionPage';
+import { RangePage } from './pages/RangePage';
+import { MonkFruitPage } from './pages/MonkFruitPage';
+import { PartnersPage } from './pages/PartnersPage';
+
+// Home components
 import { Hero } from './components/Hero';
 import { WhyCocova } from './components/WhyCocova';
 import { ProductSpotlight } from './components/ProductSpotlight';
 import { ProductCollection } from './components/ProductCollection';
 import { MonkFruitScience } from './components/MonkFruitScience';
 import { NutritionalScience } from './components/NutritionalScience';
+import { NutritionComparison } from './components/NutritionComparison';
 import { EverydayMoments } from './components/EverydayMoments';
 import { CraftsmanshipStory } from './components/CraftsmanshipStory';
 import { PartnerSection } from './components/PartnerSection';
@@ -13,11 +22,13 @@ import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { TastingModal } from './components/TastingModal';
 import { Footer } from './components/Footer';
+
 import { PRODUCTS } from './data/products';
 import { Product, CartItem } from './types';
-import { Check, ShoppingBag } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [cart, setCart] = useState<CartItem[]>([
     {
       product: PRODUCTS[0], // Start with the Grand Connoisseur Gift Box
@@ -30,6 +41,28 @@ export default function App() {
   const [tastingProduct, setTastingProduct] = useState<Product | null>(null);
   const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Sync hash routing if desired
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (['story', 'nutrition', 'range', 'monk-fruit', 'partners'].includes(hash)) {
+        setCurrentPage(hash as PageType);
+      } else if (hash === '' || hash === 'top' || hash === 'home') {
+        setCurrentPage('home');
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const handleNavigate = (page: PageType) => {
+    setCurrentPage(page);
+    window.location.hash = page === 'home' ? '' : page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleAddToCart = (product: Product) => {
     setCart((prev) => {
@@ -72,72 +105,91 @@ export default function App() {
 
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#1F1714] flex flex-col font-sans selection:bg-[#C5A059] selection:text-white">
-      {/* Navigation */}
-      <Navbar
+      {/* Top Header Navigation supporting all pages */}
+      <HeaderNav
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
         cartCount={totalCartCount}
         onOpenCart={() => setIsCartOpen(true)}
         currency={currency}
         onToggleCurrency={() => setCurrency((c) => (c === 'INR' ? 'USD' : 'INR'))}
-        onOpenInquiry={() => scrollToSection('partners')}
       />
 
-      {/* Main Page Flow */}
+      {/* Dynamic Page Renderer */}
       <main className="flex-1">
-        {/* 1. Hero Section */}
-        <Hero
-          onExploreClick={() => scrollToSection('collection')}
-          onAddToCart={handleAddToCart}
-          featuredProduct={PRODUCTS[0]}
-          currency={currency}
-        />
+        {currentPage === 'home' && (
+          <>
+            {/* 1. Hero Section */}
+            <Hero
+              onExploreClick={() => handleNavigate('range')}
+              onAddToCart={handleAddToCart}
+              featuredProduct={PRODUCTS[0]}
+              currency={currency}
+              onNavigatePartner={() => handleNavigate('partners')}
+            />
 
-        {/* 2. Why Cocova Philosophy & 4 Pillars */}
-        <WhyCocova />
+            {/* 2. Why Cocova Philosophy & 4 Pillars */}
+            <WhyCocova />
 
-        {/* 3. Product Spotlight: Grand Connoisseur Box with 5 Artisan Bars */}
-        <ProductSpotlight
-          product={PRODUCTS[0]}
-          onAddToCart={handleAddToCart}
-          onOpenTasting={(prod) => setTastingProduct(prod)}
-          currency={currency}
-        />
+            {/* 3. Product Spotlight: Grand Connoisseur Box */}
+            <ProductSpotlight
+              product={PRODUCTS[0]}
+              onAddToCart={handleAddToCart}
+              onOpenTasting={(prod) => setTastingProduct(prod)}
+              currency={currency}
+            />
 
-        {/* 4. Complete Product Collection Grid */}
-        <ProductCollection
-          onAddToCart={handleAddToCart}
-          onOpenTasting={(prod) => setTastingProduct(prod)}
-          currency={currency}
-        />
+            {/* 4. Complete Product Collection Grid */}
+            <ProductCollection
+              onAddToCart={handleAddToCart}
+              onOpenTasting={(prod) => setTastingProduct(prod)}
+              currency={currency}
+            />
 
-        {/* 5. Monk Fruit Science & Sweetener Comparison */}
-        <MonkFruitScience />
+            {/* 5. Monk Fruit Science & Sweetener Comparison */}
+            <MonkFruitScience />
 
-        {/* 6. What's Inside: Nutritional Science & Vitamins */}
-        <NutritionalScience />
+            {/* 6. What's Inside: Nutritional Science & Vitamins */}
+            <NutritionalScience />
 
-        {/* 7. Everyday Life Moments */}
-        <EverydayMoments />
+            {/* 7. Nutrition Comparison: COCOVA vs. Traditional Chocolate */}
+            <NutritionComparison onExploreRange={() => handleNavigate('range')} />
 
-        {/* 8. Craftsmanship Story: From Idea to Chocolate */}
-        <CraftsmanshipStory />
+            {/* 8. Everyday Life Moments */}
+            <EverydayMoments />
 
-        {/* 9. Commercial & Distribution Partner Portal */}
-        <PartnerSection />
+            {/* 8. Craftsmanship Story: From Idea to Chocolate */}
+            <CraftsmanshipStory />
+
+            {/* 9. Commercial & Distribution Partner Portal */}
+            <PartnerSection />
+          </>
+        )}
+
+        {currentPage === 'story' && <StoryPage onNavigate={handleNavigate} />}
+
+        {currentPage === 'nutrition' && <NutritionPage onNavigate={handleNavigate} />}
+
+        {currentPage === 'range' && (
+          <RangePage
+            onAddToCart={handleAddToCart}
+            onOpenTasting={(prod) => setTastingProduct(prod)}
+            currency={currency}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {currentPage === 'monk-fruit' && <MonkFruitPage onNavigate={handleNavigate} />}
+
+        {currentPage === 'partners' && <PartnersPage onNavigate={handleNavigate} />}
       </main>
 
-      {/* Footer */}
-      <Footer />
+      {/* Global Footer with Page Links */}
+      <Footer onNavigate={handleNavigate} />
 
-      {/* Shopping Bag Drawer */}
+      {/* Slide-out Shopping Bag Drawer */}
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -160,7 +212,7 @@ export default function App() {
         currency={currency}
       />
 
-      {/* Tasting & Nutritional Profile Modal */}
+      {/* Tasting & Nutritional Facts Modal */}
       <TastingModal
         product={tastingProduct}
         onClose={() => setTastingProduct(null)}
@@ -181,7 +233,7 @@ export default function App() {
           <span className="truncate max-w-xs">{toastMessage}</span>
           <button
             onClick={() => setIsCartOpen(true)}
-            className="ml-2 text-[#DFC088] underline hover:text-white font-semibold"
+            className="ml-2 text-[#DFC088] underline hover:text-white font-semibold cursor-pointer"
           >
             View Bag
           </button>
