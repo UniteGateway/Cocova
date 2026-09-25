@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({
     {
       id: 'splash',
       label: 'Liquid Splash Explosion',
-      image: '/src/assets/images/hero_chocolate_splash_1790322505223.jpg',
+      image: '/assets/hero-chocolate-splash.jpg',
       alt: 'Dramatic liquid chocolate splash explosion with hazelnuts and cacao beans',
       mood: 'Dynamic & Kinetic',
     },
@@ -415,7 +415,7 @@ export const Hero: React.FC<HeroProps> = ({
             >
               <div className="relative aspect-square rounded-xl overflow-hidden bg-[#24150E] border border-[#3E2519]">
                 <img
-                  src="/src/assets/images/splash_bar_burst_1790322520720.jpg"
+                  src="/assets/splash-bar-burst.jpg"
                   alt="Luxury chocolate snap with liquid chocolate burst"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"

@@ -11,7 +11,7 @@ export const PRODUCTS: Product[] = [
     category: 'box',
     flavorProfile: 'Hazelnut Crisp, Roasted Almond, Royal Pistachio, Cold-Brew Coffee, Flaky Sea Salt',
     cacaoPercentage: '60%–72% Single Origin Couverture',
-    image: '/src/assets/images/cocova_box_luxury_1790316257431.jpg',
+    image: '/assets/cocova-box-luxury.jpg',
     badge: 'Signature Luxury Edition',
     description: 'The pinnacle of guilt-free indulgence. Encased in an embossed gold foil presentation gift box, each bar marries single-origin cacao with the zero-calorie natural sweetness of pure monk fruit and 7 essential daily vitamins.',
     highlights: [
@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
     category: 'bar',
     flavorProfile: 'Toasted Hazelnut, Buttery Praline, Velvety Cacao',
     cacaoPercentage: '62% Couverture Blend',
-    image: '/src/assets/images/cocova_hazelnut_bar_1790316270426.jpg',
+    image: '/assets/cocova-hazelnut-bar.jpg',
     badge: 'Bestseller',
     description: 'A sensory triumph of roasted whole hazelnuts nestled inside a silky blend of milk and dark couverture chocolate. Sweetened naturally with pure monk fruit with zero added sugar and fortified with multivitamin wellness.',
     highlights: [
@@ -117,7 +117,7 @@ export const PRODUCTS: Product[] = [
     category: 'bar',
     flavorProfile: 'Nutty, Toasted Oak, Warm Honeyed Cacao',
     cacaoPercentage: '65% Dark Chocolate',
-    image: '/src/assets/images/cocova_artisan_bars_1790316286071.jpg',
+    image: '/assets/bar-almond-velvet.jpg',
     badge: 'Nutrient Rich',
     description: 'Crisp roasted golden California almonds enveloped in our velvety 65% dark chocolate matrix. Crafted with monk fruit sweetness and fortifying minerals for high-energy afternoons.',
     highlights: [
@@ -148,7 +148,7 @@ export const PRODUCTS: Product[] = [
     category: 'bar',
     flavorProfile: 'Earthy Pistachio, Creamy Nut Butter, Fine Dark Cacao',
     cacaoPercentage: '68% Couverture',
-    image: '/src/assets/images/cocova_artisan_bars_1790316286071.jpg',
+    image: '/assets/bar-royal-pistachio.jpg',
     badge: 'Artisan Reserve',
     description: 'Hand-selected emerald green pistachios, lightly roasted and crushed into fine nibs, folded into our rich single-origin dark chocolate. Sweetened naturally with monk fruit.',
     highlights: [
@@ -179,7 +179,7 @@ export const PRODUCTS: Product[] = [
     category: 'bar',
     flavorProfile: 'Espresso Crema, Dark Molasses, Smokey Cacao',
     cacaoPercentage: '70% Dark Chocolate',
-    image: '/src/assets/images/cocova_artisan_bars_1790316286071.jpg',
+    image: '/assets/bar-cold-brew.jpg',
     badge: 'Morning Focus',
     description: 'Slow-extracted single-origin Arabica coffee micro-crystals infused into intense 70% dark chocolate. Fortified with Vitamin B-Complex for active cognitive focus without sugar jitters.',
     highlights: [
@@ -210,7 +210,7 @@ export const PRODUCTS: Product[] = [
     category: 'bar',
     flavorProfile: 'Savory Flake, Floral Cacao, Clean Mineral Finish',
     cacaoPercentage: '72% Dark Chocolate',
-    image: '/src/assets/images/cocova_artisan_bars_1790316286071.jpg',
+    image: '/assets/bar-flaky-sea-salt.jpg',
     badge: 'Chef Favorite',
     description: 'Hand-raked mineral sea salt flakes delicately scattered over deep, velvety 72% cacao. The salt crystals heighten the complex flavor notes of the chocolate while monk fruit provides pristine zero-calorie sweetness.',
     highlights: [
@@ -241,7 +241,7 @@ export const PRODUCTS: Product[] = [
     category: 'bundle',
     flavorProfile: 'Hazelnut Crisp + Cold-Brew Coffee + Pure Couverture',
     cacaoPercentage: '62%–70% Couverture',
-    image: '/src/assets/images/cocova_lifestyle_moment_1790316297390.jpg',
+    image: '/assets/cocova-lifestyle.jpg',
     badge: 'Value Bundle',
     description: 'Designed around the rhythm of your day: Cold-Brew Espresso for morning focus, Hazelnut Crisp for afternoon energy, and Pure Couverture for relaxing evening multivitamin replenishment.',
     highlights: [
@@ -320,7 +320,7 @@ export const MOMENTS_DATA = [
     title: 'Morning Awakening',
     subtitle: 'Pair with your morning espresso',
     description: 'Replace sugary breakfast spreads with a crisp square of Cocova Cold-Brew or Hazelnut. Smooth sustained energy with zero blood sugar crashes.',
-    image: '/src/assets/images/cocova_lifestyle_moment_1790316297390.jpg',
+    image: '/assets/cocova-lifestyle.jpg',
   },
   {
     id: 'work',
@@ -334,13 +334,13 @@ export const MOMENTS_DATA = [
     title: 'Travel & Active Lifestyle',
     subtitle: 'Convenient nutrition on the go',
     description: 'Slips seamlessly into your carry-on, gym bag, or glove box. A clean, delicious multivitamin format you will genuinely look forward to taking.',
-    image: '/src/assets/images/cocova_artisan_bars_1790316286071.jpg',
+    image: '/assets/cocova-artisan-bars.jpg',
   },
   {
     id: 'family',
     title: 'Family & Mindful Gifting',
     subtitle: 'Guilt-free joy for all generations',
     description: 'Crafted without cane sugar, making it a mindful treat for parents, elders, diabetic friends, and health-conscious loved ones.',
-    image: '/src/assets/images/cocova_box_luxury_1790316257431.jpg',
+    image: '/assets/cocova-box-luxury.jpg',
   }
 ];

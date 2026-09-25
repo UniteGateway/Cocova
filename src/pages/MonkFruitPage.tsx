@@ -86,7 +86,7 @@ export const MonkFruitPage: React.FC<MonkFruitPageProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-[#DDD3C4] shadow-md bg-white">
               <img
-                src="/src/assets/images/cocova_monk_fruit_1790316235831.jpg"
+                src="/assets/cocova-monk-fruit.jpg"
                 alt="Monk Fruit and Cacao Pods"
                 referrerPolicy="no-referrer"
                 className="w-full aspect-[4/3] object-cover"

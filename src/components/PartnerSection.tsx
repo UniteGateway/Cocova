@@ -91,7 +91,7 @@ export const PartnerSection: React.FC<PartnerSectionProps> = () => {
               </div>
               <div className="flex items-center gap-1.5 text-[#6B5A51]">
                 <Mail className="w-4 h-4 text-[#8A6736]" />
-                <span>partnerships@monteviafoods.com</span>
+                <span>hello@monteviafoods.com</span>
               </div>
             </div>
           </div>

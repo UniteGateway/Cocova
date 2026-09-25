@@ -84,7 +84,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = () => {
 
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-wider text-[#DFC088]">Direct Commercial Desk</p>
-              <h4 className="font-serif text-xl text-white">partnerships@monteviafoods.com</h4>
+              <h4 className="font-serif text-xl text-white">hello@monteviafoods.com</h4>
               <p className="text-xs text-[#D1C3B7] leading-relaxed">
                 For distribution agreements, institutional purchase orders, and export inquiries.
               </p>
