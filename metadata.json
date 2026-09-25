@@ -1,0 +1,6 @@
+{
+  "name": "COCOVA — Sugar-Free Multivitamin Chocolate",
+  "description": "Discover COCOVA, artisanal sugar-free multivitamin chocolate sweetened with natural monk fruit. Indulge in pure luxury, powered by Montevia Foods.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

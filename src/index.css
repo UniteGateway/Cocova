@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-luxury: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'DM Sans', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-luxury {
+  font-family: var(--font-luxury);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Custom delicate gold and chocolate gradients */
+.gold-shimmer {
+  background: linear-gradient(135deg, #ECC480 0%, #C5A059 40%, #A47E3B 70%, #E3C17C 100%);
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #EAD09D 0%, #C89F53 50%, #9C7837 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-chocolate-gradient {
+  background: radial-gradient(circle at 50% 20%, #2E1B13 0%, #170E0A 100%);
+}
+
